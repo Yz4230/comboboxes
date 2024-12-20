@@ -31,6 +31,13 @@
       "recommended": true,
       "style": {
         "noNonNullAssertion": "off"
+      },
+      "nursery": {
+        "useSortedClasses": {
+          "fix": "safe",
+          "level": "warn",
+          "options": {}
+        }
       }
     }
   },

@@ -105,14 +105,14 @@ export default function App() {
         <ComboboxPopover
           gutter={4}
           sameWidth
-          className="mt-1 rounded border p-1 shadow"
+          className="mt-1 scale-95 rounded border p-1 opacity-0 shadow transition-all data-enter:scale-100 data-enter:opacity-100"
           getAnchorRect={getAnchorRect}
         >
           {options.map((option) => (
             <ComboboxItem
               key={option.value}
               value={option.value}
-              className="flex cursor-pointer items-center gap-2 rounded p-2 hover:bg-gray-100 data-[active-item]:bg-gray-200"
+              className="flex cursor-pointer items-center gap-2 rounded p-2 transition-colors hover:bg-gray-100 data-[active-item]:bg-gray-200"
             >
               <ComboboxItemCheck />
               {option.label}

@@ -61,25 +61,22 @@ export default function App() {
 
   const getAnchorRect = useCallback(() => {
     const rect = ref.current?.getBoundingClientRect();
-    return rect
-      ? { x: rect.x, y: rect.y, width: rect.width, height: rect.height }
-      : null;
+    return rect ?? null;
   }, []);
 
   return (
     <main className="p-4">
-      <h1 className="font-bold text-xl">Hello, world!</h1>
       <ComboboxProvider store={store}>
         <div className="flex flex-col">
-          <ComboboxLabel className="pl-3">Your favorite fruit</ComboboxLabel>
+          <ComboboxLabel>Your favorite fruit</ComboboxLabel>
           <Combobox
             autoSelect
-            placeholder="e.g., Apple"
+            placeholder="Select a fruit..."
             onKeyDown={handleKeyDown}
             render={(props) => (
               <div
                 ref={ref}
-                className="flex w-80 flex-wrap gap-2 rounded border p-2 has-focus:ring"
+                className="flex w-80 flex-wrap gap-2 rounded border border-gray-200 px-3 py-2 has-focus:ring-2"
               >
                 {state.selectedValue.map((value) => (
                   <div
@@ -97,7 +94,7 @@ export default function App() {
                     </button>
                   </div>
                 ))}
-                <input {...props} className="outline-none" />
+                <input {...props} className="flex-1 outline-none" />
               </div>
             )}
           />
@@ -105,7 +102,7 @@ export default function App() {
         <ComboboxPopover
           gutter={4}
           sameWidth
-          className="mt-1 scale-95 rounded border p-1 opacity-0 shadow transition-all data-enter:scale-100 data-enter:opacity-100"
+          className="mt-1 scale-95 rounded border border-gray-200 p-1 opacity-0 shadow transition-all data-enter:scale-100 data-enter:opacity-100"
           getAnchorRect={getAnchorRect}
         >
           {options.map((option) => (
